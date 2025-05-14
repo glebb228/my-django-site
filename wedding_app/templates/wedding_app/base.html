@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Свадьбное приглашение</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --beige-light: #f8f3ee;
+            --beige-medium: #e8d8c6;
+            --beige-dark: #d4b999;
+            --beige-darker: #b89b7a;
+            --text-dark: #5a4a3a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--beige-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .display-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Герой секция */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('images/wedding-couple.jpg') no-repeat center center/cover;
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        /* Секция с таймером */
+        .countdown-section {
+            background: var(--beige-medium);
+            padding: 4rem 0;
+            position: relative;
+            clip-path: polygon(0 0, 100% 3%, 100% 97%, 0% 100%);
+        }
+
+        .countdown-item {
+            display: inline-block;
+            margin: 0 10px;
+            text-align: center;
+            transform: scale(0);
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .countdown-item:nth-child(1) { animation-delay: 0.8s; }
+        .countdown-item:nth-child(2) { animation-delay: 1s; }
+        .countdown-item:nth-child(3) { animation-delay: 1.2s; }
+        .countdown-item:nth-child(4) { animation-delay: 1.4s; }
+
+        .countdown-number {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: bold;
+            color: var(--beige-darker);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        /* Секция с местом */
+        .location-section {
+            position: relative;
+            padding: 5rem 0;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .location-card.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Форма */
+        .form-section {
+            padding: 5rem 0;
+            background: var(--beige-light);
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
+        .form-container.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Элементы формы */
+        .form-control, .form-select {
+            border: 1px solid var(--beige-medium);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--beige-darker);
+            box-shadow: 0 0 0 0.25rem rgba(184, 155, 122, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--beige-darker);
+            border-color: var(--beige-darker);
+            padding: 0.8rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--beige-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        /* Эффекты для мобильных */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 500px;
+                background-position: 60% center;
+            }
+
+            .countdown-section {
+                padding: 3rem 0;
+                clip-path: polygon(0 0, 100% 2%, 100% 98%, 0% 100%);
+            }
+
+            .countdown-item {
+                margin: 0 5px;
+            }
+
+            .location-card, .form-container {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
