@@ -4,4 +4,4 @@ __pycache__/
 .env.local
 *.sqlite3
 *.db
-.DS_Store
+.DS_Store.env
