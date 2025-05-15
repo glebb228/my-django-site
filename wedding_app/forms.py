@@ -13,3 +13,4 @@ class QuestFeedBackForm(forms.ModelForm):
         widgets = {
             'para': forms.RadioSelect()
         }
+

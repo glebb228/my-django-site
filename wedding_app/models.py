@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 # Create your models here.
@@ -24,3 +25,5 @@ class QuestFeedBack(models.Model):
             return f'Гость: {self.name} {self.name}. Придет со второй половинкой'
         else:
             return f'Гость не сможет придти'
+
+
