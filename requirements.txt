@@ -17,6 +17,7 @@ contourpy==1.2.1
 cycler==0.12.1
 decorator==5.2.1
 distlib==0.3.7
+dj-database-url==2.3.0
 Django==5.0.7
 django-debug-toolbar==5.2.0
 django-extensions==4.1
@@ -25,6 +26,7 @@ filelock==3.13.1
 Flask==3.0.3
 fonttools==4.52.4
 frozenlist==1.5.0
+gunicorn==23.0.0
 h11==0.14.0
 idna==3.10
 ipython==9.2.0
@@ -64,6 +66,7 @@ PySide6-Addons==6.6.0
 PySide6-Essentials==6.6.0
 PySocks==1.7.1
 python-dateutil==2.9.0.post0
+python-decouple==3.8
 python-dotenv==1.1.0
 pytz==2024.1
 requests==2.32.3
@@ -87,5 +90,6 @@ virtualenv==20.24.6
 wcwidth==0.2.13
 websocket-client==1.8.0
 Werkzeug==3.0.3
+whitenoise==6.9.0
 wsproto==1.2.0
 yarl==1.18.3

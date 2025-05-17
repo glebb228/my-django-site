@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: wedding_app  # Имя твоего сервиса на Render
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Wedding.wsgi
+    autoDeploy: true
