@@ -1,5 +1,5 @@
 from django import forms
-from .models import QuestFeedBack
+from .models import QuestFeedBack, AuthModel
 
 
 class QuestFeedBackForm(forms.ModelForm):
@@ -14,3 +14,11 @@ class QuestFeedBackForm(forms.ModelForm):
             'para': forms.RadioSelect()
         }
 
+
+class AuthForm(forms.ModelForm):
+    class Meta:
+        model = AuthModel
+        fields = '__all__'
+        labels = {
+            'field': 'Введите сверхсекретный пароль'
+        }

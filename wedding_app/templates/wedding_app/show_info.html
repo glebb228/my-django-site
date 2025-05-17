@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список Гостей</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .guest-table {
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .table-header {
+            background-color: #6c757d;
+            color: white;
+        }
+        .attending-yes {
+            background-color: #d4edda;
+        }
+        .attending-no {
+            background-color: #f8d7da;
+        }
+        .attending-pair {
+            background-color: #e2e3e5;
+        }
+        h1 {
+            color: #495057;
+            margin: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-4">🎉 Список Гостей</h1>
+
+        <div class="table-responsive">
+            <table class="table guest-table table-hover table-bordered">
+                <thead class="table-header">
+                    <tr>
+                        <th class="text-center">Имя</th>
+                        <th class="text-center">Фамилия</th>
+                        <th class="text-center">Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for feed in feeds %}
+                    <tr class="{% if feed.para == '2' %}attending-pair
+                              {% elif feed.para == '1' %}attending-yes
+                              {% else %}attending-no{% endif %}">
+                        <td class="text-center">{{ feed.name }}</td>
+                        <td class="text-center">{{ feed.surname }}</td>
+                        <td class="text-center fw-bold">
+                            {% if feed.para == '2' %}
+                                Придет с парой (2) 👫
+                            {% elif feed.para == '1' %}
+                                Придет один/одна (1) 👍
+                            {% else %}
+                                Не придет (0) ❌
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

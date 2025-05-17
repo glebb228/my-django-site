@@ -1,5 +1,8 @@
 from django.db import models
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 
 # Create your models here.
@@ -27,3 +30,6 @@ class QuestFeedBack(models.Model):
             return f'Гость не сможет придти'
 
 
+class AuthModel(models.Model):
+    SECRET_QUEST_PASSWORD = os.getenv('SECRET_QUEST_PASSWORD')
+    field = models.CharField(max_length=10, default='passwod')
